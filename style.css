@@ -1,0 +1,664 @@
+@keyframes TaskAddAnimation {
+    0% {
+        height: 0px;
+        min-height: 0px;
+        opacity: 0;
+    }
+    100% {
+        height: 70px;
+        min-height: 70px;
+        opacity: 1;
+    }
+}
+
+@keyframes TaskRemoveAnimation {
+    0% {
+        height: 70px;
+        min-height: 70px;
+        opacity: 1;
+    }
+    
+    100% {
+        height: 0px;
+        min-height: 0px;
+        opacity: 0;
+    }
+}
+
+@keyframes deleteMarkerAnimation {
+    0% {
+        width: 0px;
+    }
+
+    100% {
+        width: 5px;
+    }
+}
+
+@keyframes dateContainerAnimation {
+    0% { 
+        transform: translateX(1315px);
+        opacity: 0;
+    }
+    
+    80% {
+        transform: translateX(-10%);
+        opacity: 0.6;
+    }
+    
+    100% {
+        transform: translateX(0%);
+        opacity: 1;
+    }
+}
+
+@keyframes mainWorkingAreaAnimation {
+    0% {
+        transform: translateX(-200%);
+        opacity: 0;
+    }
+    
+    80% {
+        transform: translateX(10%);
+        opacity: 0.6;
+    }
+    
+    100% {
+        transform: translateX(0%);
+        opacity: 1;
+    }
+}
+
+@keyframes loaderAnimation {
+    40% {
+        transform: scaleX(0.1);
+    }
+
+    100% {
+        transform: scaleX(1);
+    }
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', 'Roboto', sans-serif;
+}
+
+:root {
+    --navGradCol1: #654ea3af;
+    --navGradCol2: #eaafc89a;
+    --lightBlue: rgb(195, 220, 231)
+}
+
+body {
+    background-image: url('./img/backgroundImg.png');
+    background-size: cover;
+}
+
+.loader {
+    position: absolute;
+    top: 0;
+    width: 100vw;
+    height: 5px;
+    border-radius: 10px;
+    background-color: rgba(255, 0, 0, 0.498);
+    transform-origin: left;
+    transform: scaleX(0);
+    z-index: 10;
+}
+
+.loaderOnLoad {
+    animation: loaderAnimation 1000ms ease-in-out backwards;
+}
+
+.modal {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+    height: 500px;
+    width: 700px;
+    opacity: 0;
+    border-radius: 10px;
+
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    z-index: 1000;
+
+    transition: opacity 200ms, transform 200ms;
+    transform: translate(-50%, -50%) scale(0);
+
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.102);
+    background-image: linear-gradient(to right bottom, rgba(255, 255, 255, 0.134), rgba(255, 255, 255, 0.091));
+
+    pointer-events: none;
+}
+
+.modal img {
+    margin: auto auto;
+    height: 200px;
+}
+
+.modal p {
+    margin: auto 0;
+    text-align: center;
+    font-size: 3rem;
+    font-weight: 900;
+}
+
+.modal button {
+    margin: 0 auto 40px auto;
+
+    height: 70px;
+    padding: 5px 10px;
+
+    font-size: 2rem;
+    font-weight: 900;
+
+    background-color: rgba(255, 255, 255, 0.268);
+    border: 0;
+    border-radius: 10px;
+}
+
+.overlay {
+    position: fixed;
+    right: 0;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    transition: opacity 200ms, transform 200ms;
+
+    opacity: 0;
+
+    transform: scale(0);
+
+    backdrop-filter: blur(20px);
+    pointer-events: none;
+}
+
+.modal.active {
+    transform: translate(-50%, -50%)
+}
+
+.active {
+    transform: scale(1);
+    opacity: 1;
+    pointer-events: all;
+}
+
+
+header {
+    height: fit-content;
+    width: 100vw;
+}
+
+#headerSection {
+    padding-left: 100px;
+    background-image: linear-gradient(to right bottom, rgba(255, 255, 255, 0.134), rgba(255, 255, 255, 0.091));
+    backdrop-filter: blur(10px);
+}
+
+#titleHeading {
+    font-size: 3.5rem;
+    font-weight: 900;
+}
+
+.dateMainContainer {
+    height: 86vh;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+}
+
+#dateContainer {
+    width: 100%;
+    height: 12vh;
+}
+
+#date {
+    font-size: 2.5rem;
+    height: 10vh;
+    width: 35vw;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.102);
+    background-image: linear-gradient(to right bottom, rgba(255, 255, 255, 0.134), rgba(255, 255, 255, 0.091));
+    border-radius: 10px;
+    font-weight: 600;
+}
+
+.dateAnimation {
+    animation: dateContainerAnimation 1000ms ease-in-out forwards;
+}
+
+#mainWorkingArea {
+    position: relative;
+    width: 35vw;
+    max-height: 55vh;
+    flex-direction: column;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.102);
+    background-image: linear-gradient(to right bottom, rgba(255, 255, 255, 0.134), rgba(255, 255, 255, 0.091));
+    border-radius: 10px;
+}
+
+.mainWorkingAreaAnimation {
+    animation: mainWorkingAreaAnimation 1000ms ease-in-out forwards;
+}
+
+#mainTextInputAdd {
+    min-height: 101px;
+    width: 100%;
+    position: relative;
+}
+
+#mainTextInputAdd::after {
+    content: '';
+    height: 2px;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    background-color: rgb(132, 132, 132);
+}
+
+#inputUnderline {
+    position: absolute;
+    background-color: rgb(126, 126, 126, 0.516);
+    bottom: 29px;
+    height: 4px;
+    width: 480px;
+    left: 70px;
+    border-radius: 10px;
+}
+
+#mainText:not(:focus)~#inputUnderline::before {
+    content: '';
+    position: absolute;
+    background-color: var(--lightBlue);
+    height: 4px;
+    width: 0px;
+    border-radius: 10px;
+    transition: width 200ms ease-in-out 400ms;
+}
+
+#mainText:focus~#inputUnderline::before {
+    content: '';
+    position: absolute;
+    background-color: var(--lightBlue);
+    height: 4px;
+    width: 480px;
+    border-radius: 10px;
+    transition: width 100ms ease-in-out;
+}
+
+#mainText:focus~#leftVerticalLine {
+    position: absolute;
+    background-color: var(--lightBlue);
+    height: 42.5%;
+    transform: scaleY(1);
+    width: 4px;
+    left: 67px;
+    border-radius: 10px 0px 0px 10px;
+    transform-origin: bottom;
+    transition: transform 100ms;
+}
+
+#mainText:not(:focus)~#leftVerticalLine {
+    position: absolute;
+    background-color: var(--lightBlue);
+    height: 42.5%;
+    width: 4px;
+    left: 67px;
+    transform: scaleY(0);
+    border-radius: 10px 0px 0px 10px;
+    transform-origin: bottom;
+    transition: transform 200ms ease-in-out 200ms;
+}
+
+#mainText:focus~#rightVerticalLine {
+    position: absolute;
+    background-color: var(--lightBlue);
+    height: 42.5%;
+    width: 4px;
+    right: 119px;
+    transform: scaleY(1);
+    border-radius: 0px 10px 10px 0px;
+    transform-origin: bottom;
+    transition: transform 50ms ease-in-out 100ms;
+}
+
+#mainText:not(:focus)~#rightVerticalLine {
+    position: absolute;
+    background-color: var(--lightBlue);
+    height: 42.5%;
+    width: 4px;
+    right: 119px;
+    ;
+    transform: scaleY(0);
+    border-radius: 0px 10px 10px 0px;
+    transform-origin: bottom;
+    transition: transform 200ms ease-in-out 200ms;
+}
+
+#mainText:focus~#rightHorizontalLine {
+    position: absolute;
+    background-color: var(--lightBlue);
+    height: 4px;
+    width: 283px;
+    top: 29px;
+    right: 122px;
+    transform: scaleX(1);
+    border-radius: 10px 0px 0px 10px;
+    transform-origin: right;
+    transition: transform 50ms ease-in-out 150ms;
+}
+
+#mainText:not(:focus)~#rightHorizontalLine {
+    position: absolute;
+    background-color: var(--lightBlue);
+    height: 4px;
+    width: 283px;
+    top: 29px;
+    right: 122px;
+    transform: scaleX(0);
+    border-radius: 10px 0px 0px 10px;
+    transform-origin: right;
+    transition: transform 200ms ease-in-out;
+}
+
+#mainText:focus~#leftHorizontalLine {
+    position: absolute;
+    background-color: var(--lightBlue);
+    height: 4px;
+    width: 15px;
+    top: 29px;
+    left: 70px;
+    transform: scaleY(1);
+    border-radius: 0px 10px 10px 0px;
+    transform-origin: left;
+    transition: transform 100ms ease-in-out 100ms;
+}
+
+#mainText:not(:focus)~#leftHorizontalLine {
+    position: absolute;
+    background-color: var(--lightBlue);
+    height: 4px;
+    width: 15px;
+    top: 29px;
+    left: 70px;
+    transform: scaleX(0);
+    border-radius: 0px 10px 10px 0px;
+    transform-origin: left;
+    transition: transform 200ms ease-in-out;
+}
+
+#mainTextInputAdd label {
+    position: absolute;
+    font-weight: 700;
+    cursor: pointer;
+    color: white;
+}
+
+#mainText:focus~label {
+    transition: transform 200ms ease-in-out,
+        font-size 200ms ease-in-out;
+    transform: translate(-160px, -22px);
+    opacity: 0.6;
+    font-size: 1.5rem;
+}
+
+#mainText:not(:focus)~label {
+    transition: transform 200ms ease-in-out,
+        font-size 200ms ease-in-out;
+    transform: translate(-15px, 0px);
+    opacity: 0.8;
+    font-size: 1.8rem;
+
+}
+
+#mainText {
+    height: 4vh;
+    width: 25vw;
+    border-width: 0;
+    font-size: 1.5rem;
+    text-align: center;
+    padding: 10px;
+    outline: none;
+    cursor: pointer;
+    color: white;
+    transition: border-bottom 300ms ease-in;
+    border-radius: 5px;
+    background-color: transparent;
+}
+
+#addButton {
+    height: 4.2vh;
+    border-radius: 50%;
+    border: none;
+    font-size: 2.4rem;
+    aspect-ratio: 1;
+    margin-left: 10px;
+    background-color: rgba(255, 255, 255, 0.268);
+}
+
+button:active,
+button:focus,
+button:hover {
+    box-shadow: 0 0 10px rgba(128, 128, 128, 0.5);
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+#taskAreaAll {
+    max-height: 55vh;
+    width: 100%;
+    flex-direction: column;
+    justify-content: unset;
+    overflow: scroll;
+    overflow: auto;
+    overflow-x: hidden;
+    scrollbar-width: none;
+    will-change: width;
+}
+
+#taskAreaAll::-webkit-scrollbar {
+    display: none;
+}
+
+#taskAreaAll::moz {
+    display: none;
+}
+
+.tasksArea {
+    display: grid;
+    align-items: center;
+    grid-template-columns: 1fr 7fr 2fr 2fr;
+    min-height: 0px;
+    height: 0px;
+    width: 100%;
+    animation: TaskAddAnimation 200ms ease-in-out forwards;
+    position: relative;
+    will-change: width;
+}
+
+.tasksArea::after {
+    content: '';
+    height: 2px;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    background-color: rgba(132, 132, 132, 0.296);
+}
+
+.taskRemove {
+    animation: TaskRemoveAnimation 200ms ease-in-out forwards;
+}
+
+.toDelete {
+    opacity: 0.5;
+}
+
+.toDelete::before {
+    content: '';
+    height: 100%;
+    position: absolute;
+    left: 0;
+    background-color: rgb(38, 33, 98);
+    animation: deleteMarkerAnimation 200ms ease-in-out forwards;
+}
+
+.customCheckBox {
+    height: 30px;
+    aspect-ratio: 1;
+    border: 3px solid var(--yellow);
+    background-color: transparent;
+    border: 3px solid rgba(255, 255, 255, 0.241);
+    border-radius: 50%;
+    margin: 10px;
+    cursor: pointer;
+}
+
+.checkedBox {
+    box-shadow: inset 0 0 0 5px rgba(255, 255, 255, 0.521),
+        inset 0 0 0 12px rgba(255, 255, 255, 0.521);
+    transition: box-shadow 250ms;
+}
+
+span:not(.checkedBox) {
+    transition: box-shadow 250ms;
+}
+
+.tasks {
+    height: 100%;
+    width: 100%;
+    font-size: 1.5rem;
+    border-width: 0;
+    padding: 10px;
+    font-weight: 700;
+    text-align: left;
+    cursor: grab;
+    background-color: transparent;
+    color: white;
+}
+
+.tasks:focus {
+    outline: none;
+    border-bottom: 3px solid gray;
+}
+
+.edtDltBtns {
+    display: flex;
+    opacity: 1;
+    transition: opacity 200ms;
+    justify-content: space-around;
+    align-items: center;
+    height: 100%;
+}
+
+.edit {
+    font-size: 1.3rem;
+    border: 0;
+    border-radius: 10px;
+    padding: 3px 7px;
+    color: rgba(255, 255, 255, 0.511);
+    cursor: pointer;
+}
+
+.delete {
+    font-size: 1.3rem;
+    border: 0;
+    border-radius: 10px;
+    padding: 3px 7px;
+    color: rgba(255, 255, 255, 0.511);
+    cursor: pointer;
+}
+
+.edit:hover,
+.delete:hover {
+    opacity: 0.6;
+    text-shadow: none;
+}
+
+.currentTime {
+    overflow: hidden;
+    height: 100%;
+    font-size: 1.1rem;
+    text-align: center;
+    outline: none;
+    border: none;
+    cursor: unset;
+    background-color: transparent;
+    color: white;
+}
+
+.clearBtnContainer {
+    position: absolute;
+    bottom: -60px;
+    right: -8px;
+    font-size: 1.2rem;
+}
+
+.clearBtns {
+    background-color: transparent;
+    padding: 5px 10px;
+    font-size: 1.2rem;
+    border: none;
+    cursor: pointer;
+    color: white;
+}
+
+.clearBtns:hover {
+    opacity: 0.7;
+}
+
+#footer {
+    height: 5vh;
+    width: 30vw;
+    position: fixed;
+    bottom: 0;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.102);
+    background-image: linear-gradient(to right bottom, rgba(255, 255, 255, 0.134), rgba(255, 255, 255, 0.091));
+}
+
+.footerList {
+    margin: 0 auto;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    list-style: none;
+    font-size: 2rem;
+    color: white;
+}
+
+.footerList i {
+    color: white;
+    transition: color 200ms;
+}
+
+.footerList i:hover {
+    opacity: 0.7;
+}
+
+.footerList :nth-child(2) i:hover {
+    color: rgb(253, 69, 38);
+
+}
+
+.footerList :nth-child(3) i:hover {
+    color: rgb(10, 102, 194);
+}
+
+.footerList :nth-child(4) i:hover {
+    color: rgb(28, 155, 240);
+}
+
+.flex-center-H-V {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

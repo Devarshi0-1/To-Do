@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Easy To-Do</title>
+    <link rel="icon" type="image/x-icon" href="./img/favIco.png">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/34c33fb8d8.js" crossorigin="anonymous" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.0/Sortable.min.js" defer></script>
+</head>
+
+<body>
+    <header>
+        <div class="loader"></div>
+
+        <nav id="navBar">
+            <div id="headerSection">
+                <h1 id="titleHeading">Easy To-Do</h1>
+            </div>
+        </nav>
+    </header>
+
+    <div class="dateMainContainer flex-center-H-V">
+        <div id="dateContainer" class="flex-center-H-V">
+            <div id="date" class="flex-center-H-V"></div>
+        </div>
+
+        <div id="mainWorkingArea" class="flex-center-H-V">
+            <div id="mainTextInputAdd" class="flex-center-H-V">
+                <input type="text" id="mainText" name="mainTask">
+                <label id="inputLable" for="mainText" spellcheck="true">Add New Tasks</label>
+                <span id="inputUnderline"></span>
+                <span id="leftVerticalLine"></span>
+                <span id="rightVerticalLine"></span>
+                <span id="rightHorizontalLine"></span>
+                <span id="leftHorizontalLine"></span>
+                <button type="button" id="addButton" class="flex-center-H-V">+</button>
+            </div>
+
+            <ul id="taskAreaAll" class="flex-center-H-V">
+                <!-- <li class="tasksArea">
+                    <span id="customCheckBox" class="customCheckBox checkedBox" data-buttonType="notChecked"></span>
+                    <input type="text" class="tasks" readonly placeholder="Task$">
+                    <div class="edtDltBtns">
+                        <i id="edit" class="edit fa-solid fa-pen-to-square" data-buttonType="edit"></i>
+                        <i id="delete" class="delete fa-solid fa-trash"></i>
+                    </div>
+                    <input type="text" class="currentTime" placeholder="3:51:54 AM" readonly>
+                </li> -->
+            </ul>
+
+            <div class="clearBtnContainer">
+                <button type="button" class="clearBtns" id="clearCheckedTasks">Clear Done Tasks</button>
+                <button type="button" class="clearBtns" id="clearAllTasks">Clear All Tasks</button>
+            </div>
+        </div>
+    </div>
+
+    <footer id="footer">
+        <ul class="footerList">
+            <li>Contact Me</li>
+            <li><a href="https://www.instagram.com/devarshi__dwivedi/" target="_blank"><i
+                        class="fa-brands fa-instagram"></i></a></li>
+            <li><a href="https://www.linkedin.com/in/devarshi-dwivedi/" target="_blank"><i
+                        class="fa-brands fa-linkedin"></i></a></li>
+            <li><a href="https://twitter.com/DevarshiD14" target="_blank"><i class="fa-brands fa-twitter"></i></a>
+            </li>
+        </ul>
+    </footer>
+
+    <div class="modal">
+        <img src="./img/alert.png" alt="alert image">
+        <p>Tasks Cannot Be Empty!</p>
+        <button type="button" class="modalClose">Close</button>
+    </div>
+
+    <div class="overlay"></div>
+</body>
+
+</html>
