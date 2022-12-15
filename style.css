@@ -98,7 +98,8 @@ body {
     background-size: cover;
 }
 
-.backgroundImg{
+.backgroundImg {
+    position: fixed;
     object-fit: cover;
 }
 
