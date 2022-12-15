@@ -94,9 +94,12 @@
 }
 
 body {
-    background-image: url('./img/backgroundImg.webp');
     background-color: rgb(53, 53, 53);
     background-size: cover;
+}
+
+.backgroundImg{
+    object-fit: cover;
 }
 
 .loader {
