@@ -4,6 +4,7 @@
         min-height: 0px;
         opacity: 0;
     }
+
     100% {
         height: 70px;
         min-height: 70px;
@@ -17,7 +18,7 @@
         min-height: 70px;
         opacity: 1;
     }
-    
+
     100% {
         height: 0px;
         min-height: 0px;
@@ -36,16 +37,16 @@
 }
 
 @keyframes dateContainerAnimation {
-    0% { 
+    0% {
         transform: translateX(1315px);
         opacity: 0;
     }
-    
+
     80% {
         transform: translateX(-10%);
         opacity: 0.6;
     }
-    
+
     100% {
         transform: translateX(0%);
         opacity: 1;
@@ -57,12 +58,12 @@
         transform: translateX(-200%);
         opacity: 0;
     }
-    
+
     80% {
         transform: translateX(10%);
         opacity: 0.6;
     }
-    
+
     100% {
         transform: translateX(0%);
         opacity: 1;
@@ -93,7 +94,8 @@
 }
 
 body {
-    /* background-image: url('./img/backgroundImg.png'); */
+    background-image: url('./img/backgroundImg.webp');
+    background-color: rgb(53, 53, 53);
     background-size: cover;
 }
 

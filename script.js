@@ -1,6 +1,6 @@
 window.onload = () => {
     const loader = document.querySelector('.loader')
-    const date = document.querySelector('#date')    
+    const date = document.querySelector('#date')
     const taskAreaAll = document.querySelector('#taskAreaAll')
     const mainText = document.querySelector('#mainText')
     const addButton = document.querySelector('#addButton');
@@ -28,6 +28,10 @@ window.onload = () => {
         if (mainText.value != '')
             mainText.focus()
     })
+
+
+
+    // document.body.style.backgroundImage = "url('./img/backgroundImg.png')";
 
     addButton.addEventListener("click", () => {
         addTaskValue = mainText.value
