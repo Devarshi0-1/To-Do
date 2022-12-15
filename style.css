@@ -93,7 +93,7 @@
 }
 
 body {
-    background-image: url('./img/backgroundImg.png');
+    /* background-image: url('./img/backgroundImg.png'); */
     background-size: cover;
 }
 

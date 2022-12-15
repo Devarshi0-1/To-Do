@@ -1,7 +1,6 @@
 window.onload = () => {
     const loader = document.querySelector('.loader')
-    const date = document.querySelector('#date')
-    const dateContainer = document.querySelector('#dateContainer')
+    const date = document.querySelector('#date')    
     const taskAreaAll = document.querySelector('#taskAreaAll')
     const mainText = document.querySelector('#mainText')
     const addButton = document.querySelector('#addButton');
@@ -65,7 +64,6 @@ window.onload = () => {
                     edt.classList.add('fa-floppy-disk')
                     edt.setAttribute("data-buttonType", "save")
                     txt.style.cursor = 'auto'
-
                 }
 
                 else {
@@ -130,7 +128,6 @@ window.onload = () => {
     })
 
 };
-
 
 const myFunctions = {
     crtElements(crtElementTag, [...appendingClass], appendTo) {
